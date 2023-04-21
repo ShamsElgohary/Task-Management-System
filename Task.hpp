@@ -19,6 +19,8 @@ public:
          const std::chrono::system_clock::time_point& dueDate = std::chrono::system_clock::time_point(),
          const std::vector<std::string>& dependencies = std::vector<std::string>());
 
+    Task(std::string description, int priority, bool completed = false);
+
     Task() = default;
     
     // Setters
@@ -32,8 +34,10 @@ public:
     virtual std::string getTitle() const;
     std::vector<std::string> getDependencies() const;
     std::string getDueDate() const;
+    int getPriority() const;
 
-    // other methods for task management
+    // Other Methods for Task Management
+
     bool isCompleted() const;
     void complete();
     void reopen();
@@ -42,14 +46,11 @@ public:
     void update();
 
 private:
+
+    int m_priority;
     bool m_completed = false;
     std::string m_title;
     std::string m_description;
     std::chrono::system_clock::time_point m_dueDate;
     std::vector<std::string> m_dependencies;
 };
-
-
-void Task::update() {
-    std::cout << "Task " << m_title << " updated" << std::endl;
-}

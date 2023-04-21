@@ -29,3 +29,16 @@ std::vector<Task> TaskManagementSystem::getTasks() const
 {
     m_taskRepository->getTasks();
 }
+
+void TaskManagementSystem::displayTasks(const std::vector<Task>& tasks)
+{
+    std::vector<Task> sortedTasks(tasks);
+    std::sort(sortedTasks.begin(), sortedTasks.end(), [](const Task& a, const Task& b) {
+        return a.getPriority() < b.getPriority();
+    });
+
+    for (const Task& task : sortedTasks) {
+        std::cout << "[" << (task.isCompleted() ? "X" : " ") << "] "
+             << task.getPriority() << " - " << task.getTitle() << std::endl;
+    }
+}

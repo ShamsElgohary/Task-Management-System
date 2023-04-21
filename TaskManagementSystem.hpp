@@ -10,6 +10,7 @@ public:
     void updateTask(const Task& task);
     void deleteTask(const std::string& id);
     std::vector<Task> getTasks() const;
+    void displayTasks(const std::vector<Task>& tasks);
    
 private:
     std::unique_ptr<TaskRepository> m_taskRepository;

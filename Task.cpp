@@ -9,6 +9,11 @@ Task::Task(const std::string& title,
     m_dependencies = dependencies;
 }
 
+Task::Task(std::string description, int priority, bool completed = false)
+    : m_description(description), m_priority(priority), m_completed(completed)
+{
+    
+}
 
 // Setters
 
@@ -28,6 +33,11 @@ void Task::setDependencies(const std::vector<std::string>& dependencies)
 }
 
 // Getters
+
+int Task::getPriority() const 
+{ 
+    return m_priority; 
+}
 
 std::string Task::getTitle() const
 {
@@ -49,7 +59,7 @@ std::string Task::getDueDate() const
     return time_str;
 }
 
-// other methods for task management
+// Other Methods for Task Management
 
 bool Task::isCompleted() const
 {

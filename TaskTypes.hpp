@@ -21,3 +21,29 @@ void processTask(const Task& task) {
     processTask(recurringTask); // valid
 
 }
+
+
+
+/*
+int main(int argc, char* argv[])
+{
+    vector<Task> tasks = {
+        Task("Buy milk", 2),
+        Task("Pay bills", 1),
+        Task("Clean house", 3),
+        Task("Do laundry", 2),
+        Task("Wash dishes", 3),
+    };
+
+    if (argc > 1) {
+        int priorityFilter = atoi(argv[1]);
+        filterTasksByPriority(tasks, priorityFilter);
+    }
+    else {
+        displayTasks(tasks);
+    }
+
+    return 0;
+}
+
+*/
