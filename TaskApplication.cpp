@@ -56,9 +56,10 @@ int main()
                     }
                 }
                 break;
+                
 
             case 3:
-                displayTasks(tasks);
+                //displayTasks(tasks);
                 break;
 
             case 4:
@@ -67,7 +68,7 @@ int main()
                     cout << "Enter task index to mark as completed: ";
                     cin >> index;
                     if (index >= 0 && index < tasks.size()) {
-                        tasks[index].setCompleted(true);
+                        tasks[index].complete();
                         cout << "Task marked as completed." << endl;
                     }
                     else {
@@ -77,11 +78,11 @@ int main()
                 break;
 
             case 5:
-                filterTasksByPriority(tasks);
+                //filterTasksByPriority(tasks);
                 break;
 
             case 6:
-                setTaskPriority(tasks);
+                //setTaskPriority(tasks);
                 break;
 
             default:
@@ -90,5 +91,5 @@ int main()
         }
 
         cout << endl;
-    }
+     }
 }

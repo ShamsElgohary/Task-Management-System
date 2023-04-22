@@ -1,8 +1,7 @@
-#pragma once
 
 #include <fstream>
 #include <sstream>
-#include "TaskRepository.hpp""
+#include "TaskRepository.hpp"
 
 const std::string fileNameDemo = "tasks.txt";
 
@@ -54,14 +53,6 @@ TaskRepository::TaskRepository(std::string pathFile)
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-std::shared_ptr<TaskRepository> SQLTaskRepository::getInstance(std::string pathFile)
-{
-    if(m_instance == nullptr)
-        m_instance = std::make_shared<SQLTaskRepository>(pathFile);
-
-    return m_instance;
-}
-
 void SQLTaskRepository::addTask(const Task& task)
 {
     // add the task to the SQL database
@@ -81,7 +72,7 @@ void SQLTaskRepository::deleteTask(const std::string& id)
 
 std::vector<Task> SQLTaskRepository::getTasks() const
 {
-
+    return std::vector<Task>();
 }
     
 // implementation details for SQLTaskRepository
@@ -89,14 +80,6 @@ std::vector<Task> SQLTaskRepository::getTasks() const
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-
-std::shared_ptr<TaskRepository> FileTaskRepository::getInstance(std::string pathFile)
-{
-    if(m_instance == nullptr)
-        m_instance = std::make_shared<FileTaskRepository>(pathFile);
-
-    return m_instance;
-}
 
 void FileTaskRepository::addTask(const Task& task)
 {

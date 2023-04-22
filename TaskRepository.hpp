@@ -38,7 +38,7 @@ class TaskRepository {
 
 public:
 
-    virtual std::shared_ptr<TaskRepository> getInstance(std::string pathFile) = 0; 
+    TaskRepository(std::string pathFile);
     virtual void addTask(const Task& task) = 0;
     virtual void updateTask(const Task& task) = 0;
     virtual void deleteTask(const std::string& id) = 0;
@@ -47,30 +47,40 @@ public:
 
 protected:
     //Singleton
-    TaskRepository(std::string pathFile);
-    std::shared_ptr<TaskRepository> m_instance;
-    std::string m_pathFile;
-
+    static std::shared_ptr<TaskRepository> m_instance;
+    static std::string m_pathFile;
 };
 
 class SQLTaskRepository : public TaskRepository {
 public:
-    std::shared_ptr<TaskRepository> getInstance(std::string pathFile) override; 
+
     void addTask(const Task& task) override;
     void updateTask(const Task& task) override;
     void deleteTask(const std::string& id) override;
     std::vector<Task> getTasks() const override;
     // implementation details for SQLTaskRepository
+
+    using TaskRepository::TaskRepository;
+    // Inherited
+    // TaskRepository(std::string pathFile);
+    // std::shared_ptr<TaskRepository> m_instance;
+    // std::string m_pathFile;
 };
 
 class FileTaskRepository : public TaskRepository {
 public:
-    std::shared_ptr<TaskRepository> getInstance(std::string pathFile) override; 
+
     void addTask(const Task& task) override;
     void updateTask(const Task& task) override;
     void deleteTask(const std::string& id) override;
     std::vector<Task> getTasks() const override;
     // implementation details for FileTaskRepository
+
+    using TaskRepository::TaskRepository;
+    // Inherited
+    // TaskRepository(std::string pathFile);
+    // std::shared_ptr<TaskRepository> m_instance;
+    // std::string m_pathFile;
 };
 
 
